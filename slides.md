@@ -45,8 +45,14 @@ css: unocss
   </a>
 </div>
 
+
+
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+
+Hello I'm Naoki Ohashi.
+I'm glad to join, and selected to the finalist of OSS4SDG Sustainable Cities & Communities Hackathon.
+
+I took the challenge 4 "Disaster risk manager". I
 -->
 ---
 layout: image-right
@@ -63,6 +69,12 @@ image: https://avatars.githubusercontent.com/u/8760841
 - GitHub: https://github.com/naogify
 - Twitter: https://twitter.com/naogify
 
+<!--
+
+I'm IT engineer at Geolonia, Inc that is GIS company in Japan, and also contributor of Charites (The United Nations Vector Tile Toolkit's project).
+
+My GitHub account is here, and my Twitter account is also here.
+-->
 ---
 layout: image-right
 image: /japan.png
@@ -72,7 +84,7 @@ image: /japan.png
 . . .
 
 - Kushimoto town, Wakayama Prefecture, Japan
-- Northern part of main island of Japan
+- Southernmost town of main island of Japan
 - World Tsunami Awareness Day (November 5) is based on historical tsunami in 1854 at Wakayama Prefecture. (Inamura-no-hi)
 <div 
   style="
@@ -89,6 +101,13 @@ image: /japan.png
   <p style="margin: 0; line-height: 15px;">Geolonia,Inc.(https://geolonia.com/)</p>
 </div>
 
+<!--
+I live in Kushimoto town, Wakayama Prefecture, Japan.
+I'm IT engineer at Geolonia, Inc that is GIS company in Japan, and also contributor of Charites (The United Nations Vector Tile Toolkit's project).
+
+My GitHub account is here, and my Twitter account is also here.
+-->
+
 ---
 
 # What I built and why I built it ?
@@ -96,15 +115,15 @@ image: /japan.png
 
 I created Tsunami Visualization Interactive 3D Map for Nankai Trough Mega Earthquake.
 
-I live in Kushimoto, Wakayama Prefecture, Japan, where a major earthquake called the Nankai Trough Earthquake is said to be possible.
+I live in Kushimoto, Wakayama Prefecture where Nankai Trough earthquakes are expected to occur.
 
 If it happens, it is expected to cause extensive damage.
 
-The government has published static disaster prevention maps,  and this time I created a 3d interactive tsunami simulation map based on the tsunami prediction data published by the government.
+The Japanese government has published static disaster prevention maps,  and this time I created a 3d interactive tsunami simulation map based on the tsunami prediction data published by the government.
 
 Compared to ordinary disaster prevention maps, this map allows you to zoom in on any location you like and see the height of the waves in 3D. 
 
-Also, there are the blue pin markers indicating evacuation centers, so you can check in advance which evacuation centers are safe.
+Also, there are the blue pin markers indicating evacuation places, so you can check in advance which evacuation places are close by.
 
 This will lead to a higher survival rate in the event of an earthquake.
 
@@ -114,6 +133,22 @@ class: text-center
 ---
 
 # DEMO
+
+
+<!--
+This is the demo of the map.
+You can choose the location and the time of the tsunami.
+You can move the map by dragging the mouse.
+You can choose the time of the tsunami by dragging the slider.This slider has the time of the tsunami from 0 to 60 minutes.
+
+and here is the legend for tsunami height.
+
+For example around 7 minutes after the earthquake, the tsunami height is about 1 meters on the beach.
+
+And after 40 minutes, the main part of kushimoto town is flooded by tsunami.
+
+And this blue pin is the evacuation places.
+-->
 
 ---
 
