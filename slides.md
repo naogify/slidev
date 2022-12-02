@@ -65,26 +65,29 @@ image: https://avatars.githubusercontent.com/u/8760841
 - Twitter: https://twitter.com/naogify
 
 ---
+layout: image-right
+image: /japan.png
+---
 
 # I live in here
 
-
----
-# 南海トラフ大地震とは
-
----
-# 津波予測データ
-
----
-# 可視化してみた
+- Kumamoto town, Wakayama Prefecture, Japan
+- Northern part of main island of Japan
+- 世界津波の日 2021/03/11で、の元になった稲村の火 で有名
 
 ---
 
-# mesh のgeojson作成
+# 南海トラフ地震が予想されている
 
-# ベクトルタイルか
+---
 
-# スタイルを当てる
+# What I built
+
+- Tsunami visualization map for Nankai Trough Mega Earthquake (Kushimoto, Wakayama, Japan).
+- Calculated per 10㎡
+- 0min to 60min after the earthquake
+- depth of tsunami
+- the blue pin markers indicating evacuation centers,
 
 ---
 
@@ -92,7 +95,113 @@ image: https://avatars.githubusercontent.com/u/8760841
 
 ---
 
+# Why I built
+
+- I wanted to know the tsunami risk in my hometown.
+
+I live in Kushimoto, Wakayama Prefecture, Japan, where a major earthquake called the Nankai Trough Earthquake is said to be possible.
+
+If it happens, it is expected to cause extensive damage.
+
+The government has published static disaster prevention maps,  and this time I created a 3d interactive tsunami simulation map based on the tsunami prediction data published by the government.
+
+Compared to ordinary disaster prevention maps, this map allows you to zoom in on any location you like and see the height of the waves in 3D. 
+
+---
+
+# 津波予測データ
+
+- 内閣府が公開している津波予測データを利用
+- Calculated per 10㎡
+
+```csv
+"lon","lat","Published value of flood depth (m)","Arrival time_01cm (sec)","Arrival time_30cm (sec)","Arrival time_01m (sec)", "Arrival time_03m (sec)", "Arrival time_05m (sec)", "Arrival time_10m (sec)", "Arrival time_20m (sec)", "Arrival time_30m (sec)", "Arrival time_40m (sec)", "Arrival time_Max water level (sec)", "Reference value: Inundation depth (m)", "Reference value Elevation after crustal movement (m)", "Reference value: uplift (m)", "Reference value: uplift (m)"
+136.757955,34.269976,1,1240,1241,-9999,-9999,-9999,-9999,-9999,-9999,-9999,1243,0.95,12.93,-0.89
+136.758064,34.269976,2,1242,1269,1308,-9999,-9999,-9999,-9999,-9999,-9999,1308,1.10,11.79,-0.89
+136.758172,34.269975,6,1241,1257,1259,1266,1304,-9999,-9999,-9999,-9999,1304,5.17,7.47,-0.89
+136.758281,34.269974,7,1239,1250,1252,1254,1263,-9999,-9999,-9999,-9999,1305,6.95,5.44,-0.89
+136.758390,34.269974,8,941,1241,1242,1247,1256,-9999,-9999,-9999,-9999,1303,7.66,4.59,-0.89
+136.758498,34.269973,7,1239,1241,1242,1246,1259,-9999,-9999,-9999,-9999,1303,6.78,5.10,-0.89
+136.758607,34.269972,6,1241,1242,1243,1248,1286,-9999,-9999,-9999,-9999,1301,5.97,5.43,-0.89
+136.758715,34.269972,6,1241,1243,1244,1248,1284,-9999,-9999,-9999,-9999,1326,6.01,5.49,-0.89
+```
+
+---
+
+# How I built
+
+---
+
+# データの加工
+
+1. Clip Kushimoto area
+
+```js
+node bboxClip.js
+```
+https://github.com/naogify/nankai-trough-map/blob/main/bin/bboxClip.js
+
+2. create 10m grid from northWest lon, lat
+
+```js
+node point2mesh.js
+```
+https://github.com/naogify/nankai-trough-map/blob/main/bin/point2mesh.js
+
+
+3. convert csv to geojson
+```js
+node csv2geojson.js
+```
+https://github.com/naogify/nankai-trough-map/blob/main/bin/csv2geojson.js
+
+
+4. create vector tile by tippecanoe
+```js
+tippecanoe -zg -o tsunami.mbtiles -l g-simplestyle-v1 --drop-densest-as-needed ./data.geojson
+```
+
+---
+
+# 可視化
+
+3. スタイルを当てる
+
+Add Layer
+```
+  map.addLayer({
+    id: 'tsunami-1cm',
+    ...baseLayer,
+    paint: {
+      ...baseLayer.paint,
+      'fill-extrusion-height': 0.01, // 1cm
+      'fill-extrusion-color': '#FFF323'
+    }
+  }, 'poi');
+```
+
+SetFilter by current time to visible appropriate layer.
+```
+map.setFilter('tsunami-1cm', compareNow('到達時間_01cm_s', '到達時間_30cm_s', currentTime));
+```
+
+
+---
+
 # 使用したオープンデータ
+
+Tsunami Simulation Data
+- 内閣府 南海トラフの巨大地震モデル検討会」（津波断層モデル(11)津波浸水深データ（ケース1）ケース02_堤防破堤）（https://www.geospatial.jp/ckan/dataset/1211）
+
+Map Data
+- Geolonia
+- OpenStreetMap
+- GSI Japan
+ - DEM（https://maps.gsi.go.jp/development/ichiran.html#dem）
+ - gsimaps-vector-experiment（https://github.com/gsi-cyberjapan/gsimaps-vector-experiment）
+
+Style
+- Geolonia GSI （https://github.com/geoloniamaps/gsi）
 
 ---
 
