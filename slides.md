@@ -74,6 +74,20 @@ image: /japan.png
 - Kushimoto town, Wakayama Prefecture, Japan
 - Northern part of main island of Japan
 - World Tsunami Awareness Day (November 5) is based on historical tsunami in 1854 at Wakayama Prefecture. (Inamura-no-hi)
+<div 
+  style="
+    font-size: 10px;
+    color: gray;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #ffffff;
+  "
+>
+  <p style="margin: 0; line-height: 15px;">OpenStreetMap(https://www.openstreetmap.org/copyright)</p>
+  <p style="margin: 0; line-height: 15px;">GSI Japan(https://www.gsi.go.jp/)</p>
+  <p style="margin: 0; line-height: 15px;">Geolonia,Inc.(https://geolonia.com/)</p>
+</div>
 
 ---
 
@@ -116,7 +130,7 @@ Then I created a **vector tile** from the GeoJSON using tippecanoe.
   <div style="font-weight: 900; font-size: 24px; margin: auto;">→</div>
   <img src="/grid.png" width="400">
 </div>
-
+<p style="font-size: 10px; color: gray; line-height: 13px;">内閣府 南海トラフの巨大地震モデル検討会」（津波断層モデル(11)津波浸水深データ（ケース1）ケース02_堤防破堤）（https://www.geospatial.jp/ckan/dataset/1211）, OpenStreetMap(https://www.openstreetmap.org/copyright), GSI Japan(https://www.gsi.go.jp/), Geolonia,Inc.(https://geolonia.com/)</p>
 ---
 
 # Attribution
@@ -126,8 +140,8 @@ Tsunami Simulation Data
 - 内閣府 南海トラフの巨大地震モデル検討会」（津波断層モデル(11)津波浸水深データ（ケース1）ケース02_堤防破堤）（https://www.geospatial.jp/ckan/dataset/1211）
 
 Map Data
-- Geolonia
-- OpenStreetMap
+- Geolonia,Inc. (https://geolonia.com/)
+- OpenStreetMap(https://www.openstreetmap.org/copyright)
 - GSI Japan
  - DEM（https://maps.gsi.go.jp/development/ichiran.html#dem）
  - gsimaps-vector-experiment（https://github.com/gsi-cyberjapan/gsimaps-vector-experiment）
